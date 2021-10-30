@@ -5,7 +5,12 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class Solution1 {
+/**
+ * 程序员面试金典1
+ * @author Administrator
+ * @date 2021-10-21 01:17:32
+ */
+public class Coder1 {
 
 	public boolean isUnique(String astr) {
 		Set<Character> set = new HashSet<>();

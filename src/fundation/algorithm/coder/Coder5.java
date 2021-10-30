@@ -1,6 +1,6 @@
 package fundation.algorithm.coder;
 
-public class Solution5 {
+public class Coder5 {
 
 	public int insertBits(int N, int M, int i, int j) {
 		int l = N >> j >> 1 << j << 1;

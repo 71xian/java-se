@@ -1,15 +1,12 @@
 package fundation.algorithm.dict;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class WordBreak2 {
+public class WordBreakI {
 
 	Trie root;
 
-	List<String> list = new ArrayList<>();
-
-	public List<String> wordBreak(String s, List<String> wordDict) {
+	public boolean wordBreak(String s, List<String> wordDict) {
 		root = new Trie();
 		for (String word : wordDict) {
 			Trie node = root;
@@ -22,27 +19,28 @@ public class WordBreak2 {
 			}
 			node.isEnd = true;
 		}
-		return list;
+		return dfs(s, 0, new boolean[300]);
 	}
 
-	public boolean dfs(String s, int start, StringBuilder sb) {
+	public boolean dfs(String s, int start, boolean[] failMemo) {
+		if (failMemo[start]) {
+			return false;
+		}
 		if (start == s.length()) {
-			list.add(sb.toString());
 			return true;
 		}
 		Trie node = root;
 		for (int i = start; i < s.length(); i++) {
 			int index = s.charAt(i) - 'a';
-			node = node.children[index];
-			StringBuilder next = new StringBuilder(sb.toString());
-			next.append(s.charAt(i));
-			if (node.isEnd) {
-				next.append(' ');
+			if (node.children[index] == null) {
+				break;
 			}
-			if (dfs(s, i + 1, next)) {
-				return false;
+			node = node.children[index];
+			if (node.isEnd && dfs(s, i + 1, failMemo)) {
+				return true;
 			}
 		}
+		failMemo[start] = true;
 		return false;
 	}
 
@@ -55,4 +53,5 @@ public class WordBreak2 {
 			children = new Trie[26];
 		}
 	}
+
 }

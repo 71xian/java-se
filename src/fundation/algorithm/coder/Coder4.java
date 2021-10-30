@@ -3,7 +3,7 @@ package fundation.algorithm.coder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solution4 {
+public class Coder4 {
 
 	public boolean findWhetherExistsPath(int n, int[][] graph, int start, int target) {
 		if (start == target)

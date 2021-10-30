@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
-public class Solution2 {
+public class Coder2 {
 
 	public ListNode removeDuplicateNodes(ListNode head) {
 		ListNode node = head;

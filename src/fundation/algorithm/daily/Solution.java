@@ -263,6 +263,7 @@ public class Solution {
 		num = num >> (32 - length);
 		return num;
 	}
+
 }
 
 class Node {

@@ -1,7 +1,7 @@
 package fundation.algorithm.coder;
 
 
-public class Solution17 {
+public class Coder17 {
 
 	Trie root = new Trie();
 	

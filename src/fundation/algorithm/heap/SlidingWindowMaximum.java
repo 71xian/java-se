@@ -1,6 +1,6 @@
 package fundation.algorithm.heap;
 
-import java.util.PriorityQueue;
+import java.util.LinkedList;
 
 /**
  * 滑动窗口最大值
@@ -11,22 +11,21 @@ import java.util.PriorityQueue;
 public class SlidingWindowMaximum {
 
 	public int[] maxSlidingWindow(int[] nums, int k) {
-		PriorityQueue<Integer> deque = new PriorityQueue<>((o1, o2) -> o2 - o1);
-		for(int i = 0; i < k; i++) {
-			deque.add(nums[i]);
-		}
-		if (nums.length == k) {
-			return new int[] { deque.peek() };
-		}
+		LinkedList<Integer> list = new LinkedList<>();
 		int[] res = new int[nums.length - k + 1];
-		for(int i = k; i < nums.length; i++) {
-			res[i - k] = deque.peek();
-			if(deque.peek() <= nums[i - k]) {
-				deque.remove(nums[i - k]);				
+		list.offerFirst(0);
+		for (int i = 0; i < nums.length; i++) {
+			while (!list.isEmpty() && nums[list.getLast()] <= nums[i]) {
+				list.removeLast();
 			}
-			deque.add(nums[i]);
+			list.offerLast(i);
+			if(list.getFirst() <= i - k) {
+				list.removeFirst();
+			}
+			if (i + 1 - k >= 0) {
+				res[i + 1 - k] = nums[list.getFirst()];
+			}
 		}
-		res[res.length - 1] = deque.peek();
 		return res;
 	}
 }

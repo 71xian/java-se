@@ -5,7 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Solution10 {
+/**
+ * 程序员面试金典10
+ * @author Administrator
+ * @date 2021-10-21 01:17:59
+ */
+public class Coder10 {
 
 	public void merge(int[] A, int m, int[] B, int n) {
 		int a = m - 1;

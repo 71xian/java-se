@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-public class Solution8 {
+public class Coder8 {
 
 	public int waysToStep(int n) {
 		if (n == 1) {
@@ -302,7 +302,7 @@ public class Solution8 {
 	}
 
 	public static void main(String[] args) {
-		Solution8 so = new Solution8();
+		Coder8 so = new Coder8();
 		so.generateParenthesis(15);
 
 	}

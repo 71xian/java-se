@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution16 {
+public class Coder16 {
 
 	public int[] swapNumbers(int[] numbers) {
 		numbers[0] ^= numbers[1];

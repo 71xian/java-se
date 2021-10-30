@@ -1,12 +1,15 @@
 package fundation.algorithm.dict;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class WordBreak1 {
+public class WordBreakII {
 
 	Trie root;
 
-	public boolean wordBreak(String s, List<String> wordDict) {
+	List<String> list = new ArrayList<>();
+
+	public List<String> wordBreak(String s, List<String> wordDict) {
 		root = new Trie();
 		for (String word : wordDict) {
 			Trie node = root;
@@ -19,28 +22,27 @@ public class WordBreak1 {
 			}
 			node.isEnd = true;
 		}
-		return dfs(s, 0, new boolean[300]);
+		return list;
 	}
 
-	public boolean dfs(String s, int start, boolean[] failMemo) {
-		if (failMemo[start]) {
-			return false;
-		}
+	public boolean dfs(String s, int start, StringBuilder sb) {
 		if (start == s.length()) {
+			list.add(sb.toString());
 			return true;
 		}
 		Trie node = root;
 		for (int i = start; i < s.length(); i++) {
 			int index = s.charAt(i) - 'a';
-			if (node.children[index] == null) {
-				break;
-			}
 			node = node.children[index];
-			if (node.isEnd && dfs(s, i + 1, failMemo)) {
-				return true;
+			StringBuilder next = new StringBuilder(sb.toString());
+			next.append(s.charAt(i));
+			if (node.isEnd) {
+				next.append(' ');
+			}
+			if (dfs(s, i + 1, next)) {
+				return false;
 			}
 		}
-		failMemo[start] = true;
 		return false;
 	}
 
@@ -53,5 +55,4 @@ public class WordBreak1 {
 			children = new Trie[26];
 		}
 	}
-
 }
